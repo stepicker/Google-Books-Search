@@ -35,7 +35,7 @@ router.post("/api/books", (req, res) => {
   
 });
 
-// Route to delete an article
+// Route to delete a book from the database
 router.delete("/api/books/:id", function(req,res) {
 
     db.Book.deleteOne({ _id: req.params.id })
