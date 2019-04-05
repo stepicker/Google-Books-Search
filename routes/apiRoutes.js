@@ -2,9 +2,6 @@
 const express = require("express");
 const router = express.Router();
 
-// Axios
-const axios = require("axios");
-
 // Database model
 const db = require("../models/bookModel.js");
 
