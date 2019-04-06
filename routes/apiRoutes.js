@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 // Express
 const express = require("express");
 const router = express.Router();
@@ -17,7 +15,6 @@ router.get('/api/booksearch/:search', (req, res) => {
 
   axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.search}&key=${process.env.GOOGLE_KEY}`)
   .then(function(results) {
-    console.log("Api result: ", results.data);
     res.json(results.data);
   })
   .catch(function(err) {

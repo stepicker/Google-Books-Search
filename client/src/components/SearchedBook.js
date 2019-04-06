@@ -22,21 +22,11 @@ function ResultList(props) {
           <div className="content">
           <p><strong>{props.title}</strong><small> by {props.authors.join(', ')}</small><br/>{props.description}</p>
           </div>
+          <div>
+          <a className="button is-info is-outlined" href={props.link} target="_blank" rel="noopener noreferrer">Open on Google Books</a>
+          <a className="button is-success is-outlined" href="" onClick={() => props.saveBook(bookDetails)}>Save this book</a>
         </div>
-        <nav className="level is-mobile">
-          <div className="level-left">
-            <a href={props.link} target="_blank" rel="noopener noreferrer">
-              <span className="icon has-text-info">
-              <i className="fas fa-info-circle"></i>
-              </span>
-            </a>
-            <a className="level-item" aria-label="like" onClick={() => props.saveBook(bookDetails)}>
-              <span className="icon is-small">
-              <i className="fas fa-heart" aria-hidden="true"></i>
-              </span>
-            </a>
-          </div>
-        </nav>
+        </div>
       </article>
     </div>
   )
