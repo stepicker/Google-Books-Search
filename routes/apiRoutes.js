@@ -1,6 +1,7 @@
 // Express
 const express = require("express");
 const router = express.Router();
+const axios = require("axios");
 
 // Database model
 const db = require("../models/bookModel.js");
@@ -8,6 +9,20 @@ const db = require("../models/bookModel.js");
 
 // ROUTES
 // ---------------------------------
+
+// Route to get books
+router.get('/api/booksearch/:search', (req, res) => {
+
+  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.search}&key=AIzaSyD5766a0RsPCdD5HUIbB8FI-iamHOuWQS0`)
+  .then(function(results) {
+    console.log("Api result: ", results.data);
+    res.json(results.data);
+  })
+  .catch(function(err) {
+    res.json(err);
+  });
+  
+});
 
 // Route to get all saved books from the DB
 router.get('/api/books', (req, res) => {

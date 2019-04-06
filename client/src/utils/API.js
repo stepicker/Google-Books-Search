@@ -3,8 +3,8 @@ import axios from "axios";
 export default {
 
   // Gets search results from Google Books
-  getGoogleBooks: function(keyword) {
-    return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${keyword}&key=AIzaSyAaKhQg8i3vQw0QaN6J8QgIx21h52UY_3Q`);
+  getGoogleBooks: function(search) {
+    return axios.get("/api/booksearch/" + search);
   },
 
   // Gets all books from the database

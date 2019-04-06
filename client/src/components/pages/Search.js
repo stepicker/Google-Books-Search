@@ -10,13 +10,19 @@ class Search extends Component {
         results: []
     }
 
-    saveBook = id => {
-        API.saveBook(id)
+    saveBook = bookObject => {
+        API.saveBook(bookObject)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     }
 
-    searchBooks = () => {
+    searchBook = () => {
+        console.log("Searching for: ", this.state.search);
         API.getGoogleBooks(this.state.search)
-        .then(res => this.setState({ search: "", results: res.data.items}))
+        .then(res => {
+            console.log("Results: ", res.data.items);
+            this.setState( { results: res.data.items } )
+        })
         .catch(err => console.log(err));
     }
 
@@ -29,22 +35,22 @@ class Search extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        this.searchBooks();
+        this.searchBook();
     };
 
     render() {
         return (
             <div>
-                <form className="form">
+                <form className="form" onSubmit={this.handleFormSubmit}>
                     <input className="input" type="text" name="search" value={this.state.search} onChange={this.handleInputChange} placeholder="Search for a book" />
-                    <a className="button is-info" onClick={this.handleFormSubmit}>Search</a>
+                    <button type="submit" className="button is-info">Search</button>
                 </form>
                 {this.state.results.map(book => (
                     <SearchedBook
                         key={book.id.toString()}
                         id={book.id}
                         title={book.volumeInfo.title}
-                        authors={book.volumeInfo.authors.join(', ')}
+                        authors={book.volumeInfo.authors}
                         description={book.volumeInfo.description}
                         image={book.volumeInfo.imageLinks.thumbnail}
                         link={book.volumeInfo.infoLink}
