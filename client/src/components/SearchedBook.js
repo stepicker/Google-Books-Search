@@ -1,8 +1,19 @@
 import React from "react";
 
-function ResultList(props) {
+function SearchedBook(props) {
+
+  const styles = {
+    card: {
+      width: "90%",
+      margin: "10px"
+    },
+    secondButton: {
+      marginLeft: "10px"
+    }
+  };
 
   const bookDetails = {
+    id: props.id,
     title: props.title,
     authors: props.authors,
     description: props.description,
@@ -11,7 +22,7 @@ function ResultList(props) {
   };
 
   return (
-    <div className="box">
+    <div className="box" style={styles.card}>
       <article className="media">
         <div className="media-left">
           <figure className="image is-128x168">
@@ -24,7 +35,7 @@ function ResultList(props) {
           </div>
           <div>
           <a className="button is-info is-outlined" href={props.link} target="_blank" rel="noopener noreferrer">Open on Google Books</a>
-          <a className="button is-success is-outlined" href="" onClick={() => props.saveBook(bookDetails)}>Save this book</a>
+          <a className="button is-success is-outlined" style={styles.secondButton} href="/saved" onClick={() => props.saveBook(bookDetails)}>Save this book</a>
         </div>
         </div>
       </article>
@@ -33,4 +44,4 @@ function ResultList(props) {
 
 }
 
-export default ResultList;
+export default SearchedBook;

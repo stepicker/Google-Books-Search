@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Use API routes
-const routes = require("./routes/apiRoutes.js");
+const routes = require("./routes/apiRoutes");
 app.use(routes);
 
 // Send every other request to the React app
@@ -26,7 +26,7 @@ app.get("*", (req, res) => {
 
 // Connect to the database
 const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", { useNewUrlParser: true } );
 
 // Listen on the appropriate port
 app.listen(PORT, () => {

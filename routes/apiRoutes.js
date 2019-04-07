@@ -4,13 +4,13 @@ const router = express.Router();
 const axios = require("axios");
 
 // Database model
-const db = require("../models/bookModel.js");
+const db = require("../models");
 
 
 // ROUTES
 // ---------------------------------
 
-// Route to get books
+// Route to get books from Google
 router.get('/api/booksearch/:search', (req, res) => {
 
   axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.search}&key=${process.env.GOOGLE_KEY}`)
@@ -52,7 +52,7 @@ router.post("/api/books", (req, res) => {
 // Route to delete a book from the database
 router.delete("/api/books/:id", function(req,res) {
 
-  db.Book.deleteOne({ _id: req.params.id })
+  db.Book.deleteOne({ id: req.params.id })
   .then(function(dbBooks) {
     res.json(dbBooks);
   })

@@ -10,12 +10,6 @@ class Search extends Component {
         results: []
     }
 
-    saveBook = bookObject => {
-        API.saveBook(bookObject)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
-    }
-
     searchBook = () => {
         console.log("Searching for: ", this.state.search);
         API.getGoogleBooks(this.state.search)
@@ -23,6 +17,12 @@ class Search extends Component {
             console.log("Results: ", res.data.items);
             this.setState( { results: res.data.items } )
         })
+        .catch(err => console.log(err));
+    }
+
+    saveBook = bookObject => {
+        API.saveBook(bookObject)
+        .then(res => console.log(res))
         .catch(err => console.log(err));
     }
 
@@ -38,10 +38,20 @@ class Search extends Component {
         this.searchBook();
     };
 
+    styles = {
+        form: {
+            width: "90%",
+            maxWidth:"400px",
+            margin: "10px",
+            display: "flex",
+            justifyContent: "flex-start"
+        }
+    };
+
     render() {
         return (
             <div>
-                <form className="form" onSubmit={this.handleFormSubmit}>
+                <form className="form" style={this.styles.form} onSubmit={this.handleFormSubmit}>
                     <input className="input" type="text" name="search" value={this.state.search} onChange={this.handleInputChange} placeholder="Search for a book" />
                     <button type="submit" className="button is-info">Search</button>
                 </form>

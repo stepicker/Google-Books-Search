@@ -1,12 +1,18 @@
 import React from "react";
 
+const styles = {
+  h1: {
+    fontSize: "22pt",
+    marginLeft: "10px",
+    marginRight: "30px"
+  }
+}
+
 function Header() {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item">
-          <h1>Book Picker</h1>
-        </a>
+          <h1 style={styles.h1}>Book Picker</h1>
         <div className="navbar-start">
           <a className="navbar-item" href="/">
             Search
