@@ -22,6 +22,11 @@ This application uses the following technologies:
 * MongoDB database
 * React with React Router
 
+Other packages leveraged by this application include:
+* Axios for all API calls
+* Dotenv to hide the Google Books API key
+* Mongoose to manage the MongoDB database
+
 ## Link
 
 Here's the deployed version: http://book-picker.herokuapp.com/
