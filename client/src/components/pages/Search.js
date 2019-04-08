@@ -62,7 +62,7 @@ class Search extends Component {
                         title={book.volumeInfo.title}
                         authors={book.volumeInfo.authors}
                         description={book.volumeInfo.description}
-                        image={book.volumeInfo.imageLinks.thumbnail}
+                        image={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "https://via.placeholder.com/128x168"}
                         link={book.volumeInfo.infoLink}
                         saveBook={this.saveBook}
                     />
