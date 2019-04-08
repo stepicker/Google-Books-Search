@@ -15,7 +15,11 @@ class Search extends Component {
         API.getGoogleBooks(this.state.search)
         .then(res => {
             console.log("Results: ", res.data.items);
-            this.setState( { results: res.data.items } )
+            if (!res.data.items) {
+                alert("No results. Please try a different search");
+            } else {
+                this.setState( { results: res.data.items } )
+            }
         })
         .catch(err => console.log(err));
     }
