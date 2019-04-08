@@ -4,7 +4,7 @@ export default {
 
   // Gets search results from Google Books
   getGoogleBooks: function(search) {
-    let searchString = search.replace(/\s+/g, '+');
+    let searchString = search.trim().replace(/\s+/g, '+');
     console.log("Search string sent to Google: ", searchString);
     return axios.get("/api/booksearch/" + searchString);
   },
